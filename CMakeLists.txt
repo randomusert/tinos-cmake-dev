@@ -8,10 +8,14 @@ enable_language(ASM)
 # the kernel's path relative from this root file
 add_subdirectory(src/kernel)
 
+add_subdirectory(src/console)
+add_subdirectory(src/include)
+
+
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/linker.ld)
 
 add_link_options(-T ${LINKER_SCRIPT})
-add_executable(tinoscmake ${KERNEL_SOURCES})
+add_executable(tinoscmake ${KERNEL_SOURCES} ${CONSOLE_SOURCES} ${INCLUDE_SOURCES})
 
 
 
