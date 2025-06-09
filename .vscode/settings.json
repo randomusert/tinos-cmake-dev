@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.ui": "xml",
+        "text.h": "c"
+    }
+}
