@@ -3,19 +3,19 @@ ENTRY(kernel_main)
 SECTIONS {
   . = 1M;
 
-  .text : {
+  .text ALIGN(4) : {
     *(.text*)
   }
 
-  .rodata : {
+  .rodata ALIGN(4) : {
     *(.rodata*)
   }
 
-  .data : {
+  .data ALIGN(4) : {
     *(.data*)
   }
 
-  .bss : {
+  .bss ALIGN(4) (NOLOAD) : {
     *(.bss*)
   }
 }
