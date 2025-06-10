@@ -2,7 +2,7 @@
 this os is made in c with cmake
 
 # prerequisets
-* gcc (linux, mac or wsl)
+* gcc with cross platform compiler
 * ninja (windows)
 * cmake
 * wsl (windows, and not neccery)
@@ -31,6 +31,7 @@ this will generate the makefile for make or if you chose ninja and are building 
       make
    ```
 or
+
 4. 
 ```bash
       ninja
