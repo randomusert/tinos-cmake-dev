@@ -1,6 +1,6 @@
-#include "../include/text.h"
-#include "../include/io.h"
-#include "../include/scancodes.h"
+#include "../../include/text.h"
+#include "../../include/io.h"
+#include "../../include/scancodes.h"
 
 
 
