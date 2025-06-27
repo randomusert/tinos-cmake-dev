@@ -11,5 +11,7 @@ void outb(unsigned short port, unsigned char val);
 
 void scanf(char* buffer, size_t max_len);
 
+int strcmp(const char* s1, const char* s2);
+
 
 #endif

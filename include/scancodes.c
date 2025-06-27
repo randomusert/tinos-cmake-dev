@@ -1,5 +1,6 @@
 #include "scancodes.h"
 #include "io.h"
+#include "text.h"
 
 
 #define KEYBOARD_PORT 0x60
@@ -7,6 +8,12 @@
 
 uint8_t keyboard_read_scancode() {
     while ((inb(STATUS_PORT) & 1) == 0); // Wait for key press
+    /*print("[");
+    uint8_t scancode = inb(KEYBOARD_PORT);
+    print(scancode);
+    putchar(":");
+    print(scancode);
+    putchar(']');*/
     return inb(KEYBOARD_PORT);
 }
 

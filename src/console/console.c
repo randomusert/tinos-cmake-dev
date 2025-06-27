@@ -5,19 +5,40 @@
 
 
 void console() {
-
-    //old base to get things started
-    //printing
-    //print("test\n");
-    //print("test2");
-
-    //console. hurray! finally.
+    //console. finally!
     char buffer[128];
+    int pos = 0;
+
     print(">");
-    scanf(buffer, sizeof(buffer));
-    if (buffer == "ver")
-    {
-        print("v0.0.2 alpha");
+
+    while (1) {
+        char c = read_char();
+        if (!c) continue;
+
+        if (c == '\b') {
+            if (pos > 0) {
+                pos--;
+                putchar('\b');
+                putchar(' ');
+                putchar('\b');
+            }
+        } else if (c == '\n') {
+            buffer[pos] = '\0';
+            print("\n");
+
+            if (strcmp(buffer, "ver") == 0) {
+                print("TINOS v0.0.2 alpha\n");
+            } else {
+                print("Unknown command: ");
+                print(buffer);
+                print("\n");
+            }
+
+            print(">");
+            pos = 0;
+        } else if (pos < sizeof(buffer) - 1) {
+            buffer[pos++] = c;
+            putchar(c);
+        }
     }
-    
 }

@@ -1,11 +1,17 @@
 #include "../../include/text.h"
 #include "../console/console.h"
 
+#include "../../include/io.h"
+#include "../../include/scancodes.h"
+
 void kernel_main() {
     //text("welcome to tinos cmake edition\nthis os is for the fun and is not really a prod os\nNOTE: this is a hobby os and not a commercial os");
     console();
     char input_buffer[128];
     int input_pos = 0;
+
+
+
 
     while (1) {
         char c = read_char();  // Blocking keyboard input
@@ -24,5 +30,13 @@ void kernel_main() {
             input_buffer[input_pos++] = c;
             putchar(c);
         }
+       /*
+       unsigned char data = inb(0x60); //TEST!
+       putchar('[');
+       print(data);
+       putchar(']');
+       for (volatile int i = 0; i < 100000; i++); // Simple delay to avoid flooding the console. socalled crude delay
+       */
+
     }
 }
