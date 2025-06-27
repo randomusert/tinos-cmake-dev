@@ -1,5 +1,5 @@
-# Collect all kernel sources
-set(CONSOLE_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/console.c
-    PARENT_SCOPE
+add_library(console
+    console.c
 )
+
+target_include_directories(console PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
