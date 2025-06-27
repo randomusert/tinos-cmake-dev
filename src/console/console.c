@@ -1,6 +1,9 @@
 #include "../../include/text.h"
 #include "../../include/io.h"
 #include "../../include/scancodes.h"
+#include "commands/ver.h"
+#include "commands/clear.h"
+#include "commands/help.h"
 
 
 
@@ -27,8 +30,13 @@ void console() {
             print("\n");
 
             if (strcmp(buffer, "ver") == 0) {
-                print("TINOS v0.0.2 alpha\n");
-            } else {
+                ver();
+            } else if (strcmp(buffer, "clear") == 0) {
+                clear();
+            } else if (strcmp(buffer, "help") == 0) {
+                help();
+            }
+             else {
                 print("Unknown command: ");
                 print(buffer);
                 print("\n");
