@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-static uint8_t keyboard_read_scancode();
-
+uint8_t keyboard_read_scancode();
+char scancode_to_ascii(unsigned char scancode);
 
 #endif

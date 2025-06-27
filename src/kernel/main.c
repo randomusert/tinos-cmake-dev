@@ -4,5 +4,25 @@
 void kernel_main() {
     //text("welcome to tinos cmake edition\nthis os is for the fun and is not really a prod os\nNOTE: this is a hobby os and not a commercial os");
     console();
-    while (1);
+    char input_buffer[128];
+    int input_pos = 0;
+
+    while (1) {
+        char c = read_char();  // Blocking keyboard input
+        if (c == '\b') {
+            if (input_pos > 0) {
+                input_pos--;
+                putchar('\b');  // Erase char on screen
+            }
+        } else if (c == '\n' || c == '\r') {
+            print("\n");
+            input_buffer[input_pos] = '\0';
+            // Handle input buffer, e.g. check commands here
+            print("> ");
+            input_pos = 0;
+        } else if (input_pos < sizeof(input_buffer) - 1) {
+            input_buffer[input_pos++] = c;
+            putchar(c);
+        }
+    }
 }

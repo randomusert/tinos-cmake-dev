@@ -6,6 +6,7 @@
 
 void console() {
 
+    //old base to get things started
     //printing
     //print("test\n");
     //print("test2");

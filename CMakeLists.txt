@@ -24,3 +24,23 @@ target_link_libraries(tinoscmake
     drivers
     include_libs
 )
+
+
+# Copy kernel to isodir
+add_custom_command(TARGET tinoscmake POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/isodir/boot/grub
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:tinoscmake> ${CMAKE_BINARY_DIR}/isodir/boot/myos
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/grub.cfg ${CMAKE_BINARY_DIR}/isodir/boot/grub/grub.cfg
+)
+
+# Create ISO image
+add_custom_target(iso ALL
+    COMMAND grub-mkrescue -o ${CMAKE_BINARY_DIR}/tinoscmake.iso ${CMAKE_BINARY_DIR}/isodir
+    DEPENDS tinoscmake
+)
+
+
+set_target_properties(tinoscmake PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}
+    LINKER_LANGUAGE C
+)
