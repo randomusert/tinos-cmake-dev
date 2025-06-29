@@ -13,6 +13,8 @@ add_subdirectory(include)
 add_subdirectory(src/console)
 add_subdirectory(src/kernel)
 add_subdirectory(src/kernel/drivers)
+add_subdirectory(src/kernel/idt)
+add_subdirectory(src/kernel/irq)
 
 # Final kernel binary
 add_executable(tinoscmake src/kernel/boot.s)
@@ -23,6 +25,8 @@ target_link_libraries(tinoscmake
     console
     drivers
     include_libs
+    idt
+    irq
 )
 
 
