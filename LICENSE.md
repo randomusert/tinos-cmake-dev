@@ -1,4 +1,4 @@
-RST License v1.0
+RST License v1.1
 
 Copyright (c) 2025-present randomusert
 
@@ -11,7 +11,12 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
    - The redistributed software is not presented as a different or new program unrelated to the original.
    - Clear credit is given to the original author(s) and project.
 
+
 3. You may not rename, rebrand, or redistribute the Software or modified versions of it under a different identity or as a separate product, unless granted explicit written permission by the copyright holder.
+
+
+4. You may not sell the Software or modified versions that are rebranded of this software, unless granted explicit written permission by the copyright holder.
+
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY...
 

@@ -76,12 +76,21 @@ def run_qemu():
         sys.exit(1)
     run_cmd(["qemu-system-i386", "-cdrom", ISO_PATH])
 
+def ninja():
+    if not os.path.isfile(TOOLCHAIN_FILE):
+        print("[ERROR] Toolchain file '{TOOLCHAIN_FILE}' not found")
+        sys.exit(1)
+    os.makedirs(BUILD_DIR, exist_ok=True)
+    run_cmd(["cmake", "-DCMAKE_TOOLCHAIN_FILE=" + TOOLCHAIN_FILE, "-G", 'Ninja', ".."], cwd=BUILD_DIR)
+    run_cmd(["ninja"], cwd=BUILD_DIR)
+
 def main():
     parser = argparse.ArgumentParser(description="Tinos Cmake build script")
     parser.add_argument("--build", action="store_true", help="Build the kernel")
     parser.add_argument("--iso", action="store_true", help="Build the ISO")
     parser.add_argument("--run", action="store_true", help="Run in QEMU")
     parser.add_argument("--clean", action="store_true", help="Clean the build directory")
+    parser.add_argument("--ninja", action="store_true", help="generate and build using ninja")
     args = parser.parse_args()
 
     try:
@@ -95,6 +104,11 @@ def main():
             make_iso()
         if args.run:
             run_qemu()
+        if args.ninja:
+            prepare_dirs()
+            ninja()
+            copy_files()
+            make_iso()
         if not (args.build or args.iso or args.run or args.clean):
             parser.print_help()
     except KeyboardInterrupt:
