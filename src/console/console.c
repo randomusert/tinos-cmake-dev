@@ -4,6 +4,8 @@
 #include "commands/ver.h"
 #include "commands/clear.h"
 #include "commands/help.h"
+#include "commands/whoami.h"
+#include "commands/uname.h"
 
 
 
@@ -35,8 +37,12 @@ void console() {
                 clear();
             } else if (strcmp(buffer, "help") == 0) {
                 help();
-            }
-             else {
+            } else if (strcmp(buffer, "whoami") == 0) {
+                whoami();
+            } else if (strcmp(buffer, "uname") ==0)
+            {
+                uname();
+            } else {
                 print("Unknown command: ");
                 print(buffer);
                 print("\n");

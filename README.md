@@ -1,39 +1,17 @@
-# tinos-cmake
-this os is made in c with cmake
+# tinos cmake edition
+this is a hobby os. not a commercial os, yet at least.
 
-# prerequisets
-* gcc with cross platform compiler
-* ninja (windows)
-* cmake
-* wsl (windows, and not neccery)
+Welcome to tinos cmake edition. this os is made in pure c. 
 
-# building
+check for docs/building.md for building and docs/setup.md for setting up the enviroment. 
 
-1. 
- ```bash
-      mkdir build
-   ```
+# contributing
+are you interested to contribute? well, you can! by forking this repo and pushing code to your fork, you can open a Pull Request (PR).
 
-this will make a folder called build where we can run cmake
-2. 
-```bash
-      cd build
-   ```
+Found a Bug? you can create a issue over on https://github.com/tinteeam/tinos-cmake-prod/issues
 
-3. 
- ```bash
-      cmake ..
-   ```
-this will generate the makefile for make or if you chose ninja and are building in windows it will generate build.ninja
-
-4. 
-```bash
-      make
-   ```
-or
-
-4. 
-```bash
-      ninja
-   ```
-
+# notes
+1. this os is very incomplete
+2. building with ninja is pretty hard to setup
+3. if you don't want to manually build, you need python installed
+4. if you compile manually, you need to include the toolchain.cmake for the toolchain configs
