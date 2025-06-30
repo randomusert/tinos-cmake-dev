@@ -8,9 +8,30 @@
 #include "commands/uname.h"
 
 
+//irq based keyboard input handling
+#define KBD_BUF_SIZE 128
+static char kbd_buf[KBD_BUF_SIZE];
+static int kbd_buf_head = 0;
+static int kbd_buf_tail = 0;
+
+void kbd_buffer_push(char c) {
+    int next = (kbd_buf_head + 1) % KBD_BUF_SIZE;
+    if (next != kbd_buf_tail) {
+        kbd_buf[kbd_buf_head] = c;
+        kbd_buf_head = next;
+    }
+}
+
+char read_char() {
+    if (kbd_buf_head == kbd_buf_tail) return 0;
+    char c = kbd_buf[kbd_buf_tail];
+    kbd_buf_tail = (kbd_buf_tail + 1) % KBD_BUF_SIZE;
+    return c;
+}
+
+
 
 void console() {
-    //console. finally!
     char buffer[128];
     int pos = 0;
 
@@ -23,9 +44,7 @@ void console() {
         if (c == '\b') {
             if (pos > 0) {
                 pos--;
-                putchar('\b');
-                putchar(' ');
-                putchar('\b');
+                print("\b \b");
             }
         } else if (c == '\n') {
             buffer[pos] = '\0';
@@ -39,8 +58,7 @@ void console() {
                 help();
             } else if (strcmp(buffer, "whoami") == 0) {
                 whoami();
-            } else if (strcmp(buffer, "uname") ==0)
-            {
+            } else if (strcmp(buffer, "uname") == 0) {
                 uname();
             } else {
                 print("Unknown command: ");
@@ -56,3 +74,4 @@ void console() {
         }
     }
 }
+

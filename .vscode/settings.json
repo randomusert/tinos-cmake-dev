@@ -3,5 +3,10 @@
         "*.ui": "xml",
         "text.h": "c",
         "*.h": "c"
-    }
+    },
+    "cmake.generator": "Unix Makefiles",
+    "cmake.configureArgs": [
+        "-DCMAKE_TOOLCHAIN_FILE=${workspaceFolder}/toolchain.cmake"
+    ],
+    "cmake.buildDirectory": "${workspaceFolder}/build"
 }
